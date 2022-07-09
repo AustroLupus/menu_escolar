@@ -45,27 +45,28 @@
     </tr>
   </thead>
   <tbody>
-    <tr class="fondo-verde">
-      <td>23/10/2022</td>
-      <td>120</td>
-      <td>150</td>
-      <td>30</td>
-      <td>45</td>
-      <td>12</td>
-      <td><a href="#" class="btn btn-light text-dark" type="submit">Rectificar</a></td>
-    </tr>
-    <tr class="fondo-naranja">
-      <td>12/03/2022</td>
-      <td>230</td>
-      <td>21</td>
-      <td>140</td>
-      <td>55</td>
-      <td>89</td>
-      <td><a href="#" class="btn btn-light text-dark" type="submit">Ver detalle</a></td>
-    </tr>
   </tbody>
+  {% for pedido in pedidos %}
+  {% if pedido.is_rectified == false %}
+    <tr class="fondo-verde">
+  {% else %}
+    <tr class="fondo-naranja">
+  {% endif %}
+      <td>{{ pedido.date }}</td>
+      <td>{{ pedido.vegetarian }}</td>
+      <td>{{ pedido.celiac }}</td>
+      <td>{{ pedido.standard }}</td>
+      <td>{{ pedido.caloric }}</td>
+      <td>{{ pedido.ethnic }}</td>
+      <td>
+        {% if pedido.is_rectified == false %}
+        <a href="#" class="btn btn-light text-dark" type="submit">Rectificar</a>
+        {% else %}
+        <a href="#" class="btn btn-light text-dark" type="submit">Ver detalle</a>
+        {% endif %}
+      </td>
+  {% endfor %}
 </table>
-</div>
 {% endblock %}
 
 {% block script %}

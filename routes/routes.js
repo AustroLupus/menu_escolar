@@ -1,6 +1,6 @@
 const express = require('express')
 const fs = require('fs').promises
-const {add_question,get_preguntas,shuffle, check_respuesta, add_score, get_scores,find_user
+const {add_menu,get_preguntas, check_respuesta, add_score, get_pedidos,find_user
 } = require('../db.js')
 
 const router = express.Router()
@@ -15,7 +15,8 @@ function protected_route (req, res, next) {
 
 // RUTAS
 router.get('/', protected_route, async (req, res) => {
-  res.render('index.html', {user: req.session.user})
+  const pedidos = await get_pedidos(req.session.user.id)
+  res.render('index.html', {user: req.session.user, pedidos})
 })
 
 router.get('/orders/new', protected_route, (req, res) => {
@@ -24,8 +25,21 @@ router.get('/orders/new', protected_route, (req, res) => {
 })
 
 router.post('/orders/new', protected_route, async (req, res) => {
-  res.send(JSON.stringify(req.body))
+  //res.send(JSON.stringify(req.body))
+  const vegetariano = parseInt(req.body.menuVeg)
+  const calorico = parseInt(req.body.menuCal)
+  const celiaco = parseInt(req.body.menuCeliaco)
+  const autoctono = parseInt(req.body.menuAutoc)
+  const estandard = parseInt(req.body.menuEstandar)
+  const fecha=req.body.fechaPedido
+  const school = parseInt(req.body.schoolId)
+  await add_menu(vegetariano, calorico, celiaco, autoctono, estandard, fecha,school)
+  req.flash('notices', 'Pedido Creado')
+  res.redirect('/')
 })
+
+
+//funciones viejas abajo
 
 router.get('/jugar', protected_route, async (req, res) => {
   let preguntas = await get_preguntas()

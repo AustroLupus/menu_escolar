@@ -16,23 +16,23 @@
     <form action="#" method="post">
         <div class="row mt-2">
             <div class="col-4">
-                <input type="number" class="form-control" id="menuVeg" name="menuVeg" placeholder="M. Vegetarianos" required>
+                <input type="number" class="form-control" id="menuVeg" name="menuVeg" placeholder="M. Vegetarianos" required max="1000" min="0">
             </div>
             <div class="col-4">
-                <input type="number" class="form-control" id="menuCal" name="menuCal" placeholder="M. Cal&oacute;rico" required>
-            </div>
-        </div>
-        <div class="row mt-2">
-            <div class="col-4">
-                <input type="number" class="form-control" id="menuCeliaco" name="menuCeliaco" placeholder="M. Celiacos" required>
-            </div>
-            <div class="col-4">
-                <input type="number" class="form-control" id="menuAutoc" name="menuAutoc" placeholder="M. Aut&oacute;ctono" required>
+                <input type="number" class="form-control" id="menuCal" name="menuCal" placeholder="M. Cal&oacute;rico" required  max="1000" min="0">
             </div>
         </div>
         <div class="row mt-2">
             <div class="col-4">
-                <input type="number" class="form-control" id="menuEstandar" name="menuEstandar" placeholder="M. Est&aacute;ndar" required>
+                <input type="number" class="form-control" id="menuCeliaco" name="menuCeliaco" placeholder="M. Celiacos" required max="1000" min="0">
+            </div>
+            <div class="col-4">
+                <input type="number" class="form-control" id="menuAutoc" name="menuAutoc" placeholder="M. Aut&oacute;ctono" required  max="1000" min="0">
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-4">
+                <input type="number" class="form-control" id="menuEstandar" name="menuEstandar" placeholder="M. Est&aacute;ndar" required  max="1000" min="0">
             </div>
             <div class="col-4">
                 <input type="date" class="form-control" id="fechaPedido" name="fechaPedido">
@@ -41,7 +41,7 @@
         <input type="hidden" name="schoolId" id="schoolId" value={{ user.id }}>
         <div class="row mt-2 mb-2">
             <div class="col-4 offset-6">
-                <button type="submit" class="btn btn-secondary text-light">Registarse</button>
+                <button type="submit" class="btn btn-secondary text-light">Ingresar</button>
             </div>
         </div>
     </form>

@@ -37,16 +37,28 @@ async function create_user(name, email, password) {
 
 }
 
-async function add_question(question,correct,fakeA,fakeB){
-  const client = await pool.connect()
-  
+async function add_menu(vegetariano,calorico,celiaco,autoctono,estandard,fecha,school){
+  const client = await pool.connect() 
+
   await client.query({
-    text: 'insert into questions (question,answer,fake_one,fake_two) values ($1, $2, $3, $4)',
-    values: [question, correct, fakeA, fakeB]
+    text: 'insert into orders (date, school_id, vegetarian, celiac, standard, caloric, ethnic) values ($1, $2, $3, $4, $5, $6, $7)',
+    values: [fecha, school, vegetariano, celiaco, estandard, calorico, autoctono]
   })
   client.release()
 }
+async function get_pedidos(user_id){
+  const client = await pool.connect()
 
+  const { rows } =await client.query({
+    text: "select to_char(orders.date,'DD-MM-YYYY') as date, orders.vegetarian, orders.celiac, orders.standard, orders.caloric, orders.ethnic, orders.is_rectified from orders where school_id=$1",
+    values: [user_id]
+  })
+  console.table(rows)
+  client.release()
+  return rows
+}
+
+//funciones antiguas
 async function get_preguntas(){
   const client = await pool.connect()
 
@@ -99,6 +111,6 @@ async function find_user(user){
 }
 
 module.exports = {
-  get_user, create_user, add_question, get_preguntas, check_respuesta, add_score, get_scores, find_user
+  get_user, create_user, add_menu, check_respuesta, add_score, get_scores, find_user, get_pedidos
 }
 
