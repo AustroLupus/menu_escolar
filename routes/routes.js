@@ -15,7 +15,6 @@ function protected_route (req, res, next) {
 
 // RUTAS
 router.get('/', protected_route, async (req, res) => {
-  return res.send("Usuario ingresado")
   res.render('index.html', {user: req.session.user})
 })
 
@@ -42,7 +41,6 @@ router.get('/jugar', protected_route, async (req, res) => {
     nuevoObjeto.push(obj1)
 
   }
-  //console.log(nuevoObjeto)
   res.render('jugar.html', {nuevoObjeto})
 })
 

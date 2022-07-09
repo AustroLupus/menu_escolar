@@ -1,5 +1,5 @@
 {% extends 'layout.html' %}
-<!-- {% from 'macros.html' import navbar %} -->
+{% from 'macros.html' import navbar %}
 
 {% block styles %}
 <style>
@@ -8,7 +8,10 @@
 {% endblock %}
 
 {% block main %}
-  <!-- {{ navbar('/', user.es_admin ) }} -->
+{{ navbar ( user.name ) }}
+
+<p>Pedidos</p>
+
 {% endblock %}
 
 {% block script %}
