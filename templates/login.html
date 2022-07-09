@@ -1,0 +1,63 @@
+{% extends 'layout.html' %}
+
+
+{% block main %}
+<div class="row mt-5">
+  <div class="col">
+    <fieldset class="form-group border p-3">
+    <legend class="w-auto px-2">Login</legend>
+    <form action="/login" method="post">
+      <div class="form-group row mt-2 mb-2">
+        <label for="email" class="col-sm-3 col-form-label">Email:</label>
+        <div class="col-sm-9">
+          <input type="email" class="form-control" id="email" name="email" placeholder="email" required>
+        </div>
+      </div>
+      <div class="form-group row mt-2 mb-2">
+        <label for="password" class="col-sm-3 col-form-label">Password:</label>
+        <div class="col-sm-9">
+          <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+        </div>
+      </div>
+      <div class="text-end">
+        <button type="submit" class="btn btn-primary">Ingresar</button>
+      </div>
+    </form>
+    </fieldset>
+  </div>
+  <div class="col">
+    <fieldset class="form-group border p-3">
+    <legend class="w-auto px-2">Register</legend>
+    <form action="/register" method="post">
+      <div class="form-group row mt-2 mb-2">
+        <label for="name" class="col-sm-3 col-form-label">Nombre:</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="name" name="name" placeholder="Nombre" required>
+        </div>
+      </div>
+      <div class="form-group row mt-2 mb-2">
+        <label for="email" class="col-sm-3 col-form-label">Email:</label>
+        <div class="col-sm-9">
+          <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+        </div>
+      </div>
+      <div class="form-group row mt-2 mb-2">
+        <label for="password" class="col-sm-3 col-form-label">Password:</label>
+        <div class="col-sm-9">
+          <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+        </div>
+      </div>
+      <div class="form-group row mt-2 mb-2">
+        <label for="password_confirm" class="col-sm-3 col-form-label">Confirmar PW:</label>
+        <div class="col-sm-9">
+          <input type="password" class="form-control" id="password_confirm" name="password_confirm" placeholder="Confirmar Password" required>
+        </div>
+      </div>
+      <div class="text-end">
+        <button type="submit" class="btn btn-primary">Registarse</button>
+      </div>
+    </form>
+    </fieldset>
+  </div>
+</div>
+{% endblock %}
