@@ -16,7 +16,7 @@ async function get_user(email) {
   const client = await pool.connect()
 
   const { rows } = await client.query({
-    text: 'select * from users where email=$1',
+    text: 'select * from schools where email=$1',
     values: [email]
   })
 
@@ -29,7 +29,7 @@ async function create_user(name, email, password) {
   const client = await pool.connect()
 
   await client.query({
-    text: 'insert into users (name, email, password) values ($1, $2, $3)',
+    text: 'insert into schools (name, email, password) values ($1, $2, $3)',
     values: [name, email, password]
   })
 
@@ -37,28 +37,6 @@ async function create_user(name, email, password) {
 
 }
 
-async function create_admin(name, email, password) {
-  const client = await pool.connect()
-
-  await client.query({
-    text: 'insert into users (name, email, password, es_admin) values ($1, $2, $3, $4)',
-    values: [name, email, password, true]
-  })
-
-  client.release()
-
-}
-
-async function checkadmin (){
-  const client = await pool.connect()
-
-  const {rows} = await client.query({
-    text: 'select * from users'
-  })
-  client.release()
-  return rows
-
-}
 async function add_question(question,correct,fakeA,fakeB){
   const client = await pool.connect()
   
@@ -79,23 +57,6 @@ async function get_preguntas(){
   return rows
 }
 
-function shuffle(array) {
-  let currentIndex = array.length,  randomIndex;
-
-  // While there remain elements to shuffle...
-  while (currentIndex != 0) {
-
-    // Pick a remaining element...
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex--;
-
-    // And swap it with the current element.
-    [array[currentIndex], array[randomIndex]] = [
-      array[randomIndex], array[currentIndex]];
-  }
-
-  return array;
-}
 
 async function check_respuesta(id,pregunta){
   const client = await pool.connect()
@@ -138,6 +99,6 @@ async function find_user(user){
 }
 
 module.exports = {
-  get_user, create_user, checkadmin, create_admin, add_question, get_preguntas, shuffle,check_respuesta, add_score, get_scores, find_user
+  get_user, create_user, add_question, get_preguntas, check_respuesta, add_score, get_scores, find_user
 }
 

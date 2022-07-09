@@ -15,6 +15,7 @@ function protected_route (req, res, next) {
 
 // RUTAS
 router.get('/', protected_route, async (req, res) => {
+  return res.send("Usuario ingresado")
   res.render('index.html', {user: req.session.user})
 })
 
