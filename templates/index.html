@@ -9,9 +9,63 @@
 
 {% block main %}
 {{ navbar ( user.name ) }}
+<div class="container-fluid mt-3">
+  <div class="d-flex justify-content-between mb-3">
+    <div class="p-2">
+      <h4>Pedidos</h4>
+    </div>
+    <div class="p-2">
+      <a href="/orders/new" class="btn btn-success text-light" type="submit">Nuevo Pedido</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4 contenedor-linea-simple">
+      M1: Men&uacute; Vegetariano<br>
+      M2: Men&uacute; Celiaco<br>
+      M3: Men&uacute; Est&aacute;ndar
+    </div>
+    <div class="col-4 contenedor-linea-simple">
+      M4: Men&uacute; Cal&oacute;rico<br>
+      M5: Men&uacute; Aut&oacute;ctono<br>
+      &nbsp;
+    </div>
+  </div>
+</div>
 
-<p>Pedidos</p>
-
+<table class="table table-bordered">
+  <thead>
+    <tr class="table-secondary">
+      <th>Fecha</th>
+      <th>M1</th>
+      <th>M2</th>
+      <th>M3</th>
+      <th>M4</th>
+      <th>M5</th>
+      <th>ACCI&Oacute;N</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="fondo-verde">
+      <td>23/10/2022</td>
+      <td>120</td>
+      <td>150</td>
+      <td>30</td>
+      <td>45</td>
+      <td>12</td>
+      <td><a href="#" class="btn btn-light text-dark" type="submit">Rectificar</a></td>
+    </tr>
+    <tr class="fondo-naranja">
+      <td>12/03/2022</td>
+      <td>230</td>
+      <td>21</td>
+      <td>140</td>
+      <td>55</td>
+      <td>89</td>
+      <td><a href="#" class="btn btn-light text-dark" type="submit">Ver detalle</a></td>
+    </tr>
+  </tbody>
+</table>
+</div>
 {% endblock %}
 
 {% block script %}

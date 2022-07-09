@@ -18,9 +18,13 @@ router.get('/', protected_route, async (req, res) => {
   res.render('index.html', {user: req.session.user})
 })
 
-router.get('/agregar_pregunta', protected_route, (req, res) => {
+router.get('/orders/new', protected_route, (req, res) => {
   
-  res.render('agregar_pregunta.html',)
+  res.render('./new.html',)
+})
+
+router.post('/orders/new', protected_route, async (req, res) => {
+  res.send(JSON.stringify(req.body))
 })
 
 router.get('/jugar', protected_route, async (req, res) => {
